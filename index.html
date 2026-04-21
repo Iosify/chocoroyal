@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chocolat Royal — Brand Concept</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --chocolate-deep: #120800;
+    --chocolate-dark: #2a0f02;
+    --chocolate-rich: #4a1c04;
+    --chocolate-mid: #6b3010;
+    --cream: #f5e6cc;
+    --ivory: #fdf8f0;
+    --gold: #c9a227;
+    --gold-light: #e8c96a;
+    --gold-pale: #f0dfa0;
+    --rose: #c97b6a;
+    --text-light: #f0ddc0;
+    --text-muted: #9a7a5a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--chocolate-deep);
+    color: var(--cream);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ─── TABS ─── */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: var(--chocolate-dark);
+    border-bottom: 1px solid rgba(201,162,39,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+  }
+  .tab {
+    padding: 14px 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--text-muted);
+    border: none;
+    background: none;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
+  }
+  .tab.active, .tab:hover {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ─── SECTION: BRAND COVER ─── */
+  .brand-cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 30%, rgba(74,28,4,0.6) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 60% at 30% 80%, rgba(42,15,2,0.8) 0%, transparent 60%),
+      var(--chocolate-deep);
+    text-align: center;
+    padding: 80px 40px;
+  }
+
+  .brand-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 60px,
+        rgba(201,162,39,0.03) 60px,
+        rgba(201,162,39,0.03) 61px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 60px,
+        rgba(201,162,39,0.03) 60px,
+        rgba(201,162,39,0.03) 61px
+      );
+  }
+
+  .ornament {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 30px;
+    position: relative;
+  }
+  .ornament::before {
+    content: '◆';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--gold);
+    font-size: 10px;
+    background: var(--chocolate-deep);
+    padding: 0 8px;
+  }
+
+  .logo-mark {
+    width: 90px;
+    height: 90px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    position: relative;
+    background: radial-gradient(circle, rgba(74,28,4,0.8), var(--chocolate-deep));
+  }
+  .logo-mark::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(201,162,39,0.4);
+    border-radius: 50%;
+  }
+  .logo-mark svg {
+    width: 44px;
+    height: 44px;
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 8vw, 80px);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .brand-name span {
+    color: var(--gold);
+  }
+  .brand-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 50px;
+  }
+
+  .palette-strip {
+    display: flex;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 40px auto 0;
+    max-width: 480px;
+  }
+  .swatch {
+    flex: 1;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 8px;
+  }
+  .swatch span {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+  }
+  .section-label::before, .section-label::after {
+    content: '';
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .section-label::after {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  /* ─── SECTION: MENU ─── */
+  .menu-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 30px 100px;
+  }
+
+  .menu-header {
+    text-align: center;
+    padding: 60px 30px 40px;
+    position: relative;
+  }
+  .menu-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 58px);
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .menu-header p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .menu-section {
+    margin-bottom: 56px;
+  }
+  .menu-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201,162,39,0.25);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .menu-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201,162,39,0.25), transparent);
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(201,162,39,0.08);
+    transition: background 0.2s;
+    position: relative;
+  }
+  .menu-item:hover {
+    background: rgba(201,162,39,0.04);
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 0 -8px;
+  }
+  .item-left { flex: 1; }
+  .item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+  .item-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    max-width: 520px;
+  }
+  .item-dots {
+    flex: 1;
+    border-bottom: 1px dotted rgba(201,162,39,0.2);
+    margin: 0 12px;
+    margin-bottom: 6px;
+    min-width: 40px;
+  }
+  .item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--gold-light);
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+  .price-note {
+    font-size: 9px;
+    color: var(--text-muted);
+    display: block;
+    text-align: right;
+  }
+
+  .item-variants {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .variant {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .variant-label {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .variant-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--gold-light);
+  }
+
+  /* ─── BRAND SPEC SECTION ─── */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 30px 100px;
+  }
+  .spec-card {
+    background: rgba(42,15,2,0.5);
+    border: 1px solid rgba(201,162,39,0.18);
+    border-radius: 4px;
+    padding: 28px;
+  }
+  .spec-card-title {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201,162,39,0.2);
+  }
+  .colour-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .colour-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    flex-shrink: 0;
+  }
+  .colour-info { flex: 1; }
+  .colour-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 2px;
+  }
+  .colour-codes {
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .font-sample {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(201,162,39,0.1);
+  }
+  .font-sample:last-child { border: none; margin: 0; padding: 0; }
+  .font-role {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .font-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  .font-display-2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--text-muted);
+  }
+  .font-body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: var(--cream);
+    letter-spacing: 0.05em;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .deliverable-list {
+    list-style: none;
+  }
+  .deliverable-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 300;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(201,162,39,0.07);
+    line-height: 1.4;
+  }
+  .deliverable-list li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 7px;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  .notice-bar {
+    background: rgba(42,15,2,0.7);
+    border: 1px solid rgba(201,162,39,0.2);
+    border-radius: 4px;
+    padding: 16px 24px;
+    text-align: center;
+    margin: 40px auto;
+    max-width: 600px;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+  }
+
+  /* ─── PACKAGING SECTION ─── */
+  .packaging-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px 100px;
+  }
+  .packaging-item {
+    background: linear-gradient(135deg, rgba(74,28,4,0.4), rgba(18,8,0,0.6));
+    border: 1px solid rgba(201,162,39,0.18);
+    border-radius: 6px;
+    padding: 32px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .pkg-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: rgba(201,162,39,0.1);
+    border: 1px solid rgba(201,162,39,0.3);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pkg-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .pkg-subtitle {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .pkg-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .pkg-spec {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .tag {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,162,39,0.35);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  /* ─── DOWNLOAD BUTTON ─── */
+  .download-area {
+    text-align: center;
+    padding: 50px 30px 80px;
+  }
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--chocolate-deep);
+    border: none;
+    padding: 16px 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    border-radius: 2px;
+  }
+  .btn-download:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 600px) {
+    .packaging-item { flex-direction: column; }
+    .brand-cover { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TABS -->
+<nav class="tabs">
+  <button class="tab active" onclick="showTab('cover')">Brand Concept</button>
+  <button class="tab" onclick="showTab('menu')">Menu Redesign</button>
+  <button class="tab" onclick="showTab('specs')">Brand Specs</button>
+  <button class="tab" onclick="showTab('packaging')">Packaging</button>
+</nav>
+
+<!-- ═══ TAB 1: BRAND COVER ═══ -->
+<div id="cover" class="tab-panel active">
+  <section class="brand-cover">
+    <div class="ornament"></div>
+    <div class="logo-mark">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 6 C22 6 14 10 14 18 C14 22 17 26 22 28 C27 26 30 22 30 18 C30 10 22 6 22 6Z" fill="none" stroke="#c9a227" stroke-width="1.2"/>
+        <path d="M22 28 L22 38" stroke="#c9a227" stroke-width="1.2"/>
+        <path d="M16 32 Q22 28 28 32" stroke="#c9a227" stroke-width="1" stroke-dasharray="2 2"/>
+        <circle cx="22" cy="10" r="1.5" fill="#c9a227"/>
+      </svg>
+    </div>
+    <p style="font-size:9px; letter-spacing:0.4em; text-transform:uppercase; color:var(--text-muted); margin-bottom:16px;">Est. Lagos, Nigeria</p>
+    <h1 class="brand-name">Chocolat <span>Royal</span></h1>
+    <p class="brand-tagline">The art of indulgence, refined.</p>
+    <div class="ornament" style="margin-top:30px; margin-bottom:40px;"></div>
+
+    <div class="section-label">Brand Direction: Dark Chocolatier Luxury</div>
+    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--text-muted); max-width:560px; line-height:1.8; text-align:center; margin: 0 auto 50px;">
+      A positioning shift from birthday-cake sweetness to sophisticated, European-influenced indulgence — built for a Lagos premium dining audience.
+    </p>
+
+    <div class="palette-strip">
+      <div class="swatch" style="background:#120800;"><span>Midnight</span></div>
+      <div class="swatch" style="background:#4a1c04;"><span>Cocoa</span></div>
+      <div class="swatch" style="background:#6b3010;"><span>Mahogany</span></div>
+      <div class="swatch" style="background:#c9a227;"><span>Gold</span></div>
+      <div class="swatch" style="background:#f5e6cc;"><span style="color:rgba(0,0,0,0.5);">Cream</span></div>
+      <div class="swatch" style="background:#c97b6a;"><span>Rose</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ TAB 2: MENU REDESIGN ═══ -->
+<div id="menu" class="tab-panel">
+  <div class="menu-header">
+    <div class="ornament" style="margin-bottom:20px;"></div>
+    <p style="font-size:9px; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Food Menu</p>
+    <h1>Chocolat <span style="color:var(--gold);">Royal</span></h1>
+    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14px; color:var(--text-muted); margin-top:6px;">Prices are inclusive of 10% Service Charge, 5% Consumption Tax and 7.5% VAT</p>
+  </div>
+
+  <div class="menu-wrapper">
+
+    <!-- SALADS -->
+    <div class="menu-section">
+      <div class="menu-section-title">Salads</div>
+      <div class="menu-item">
+        <div class="item-left">
+          <div class="item-name">Chef's Salad</div>
+          <div class="item-desc">Ham, Swiss cheese, hard-boiled eggs, lettuce, tomatoes, cucumbers, corn. Choice of dressing: French, Thousand Island, Balsamic Vinaigrette or Lemon Mustard.</div>
+        </div>
+        <div class="item-dots"></div>
+        <div class="item-price">₦15,000</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-left">
+          <div class="item-name">Vegetarian Special</div>
+          <div class="item-desc">Grilled eggplant, zucchini, onions, sautéed garlic, carrots, lettuce and tomatoes with balsamic vinaigrette.</div>
+        </div>
+        <div class="item-dots"></div>
+        <div class="item-price">₦15,000</div>
+      </div>
+    </div>
+
+    <!-- STARTERS -->
+    <div class="menu-section">
+      <div class="menu-section-title">Starters &amp; Small Plates</div>
+
+      <div class="menu-item">
+        <div class="item-left">
+          <div class="item-name">Popcorn Shrimps</div>
+          <div class="item-desc">Breaded fried shrimps, served with spicy tomato sauce.</div>
+        </div>
+        <div class="item-dots"></div>
+        <div class="item-price">₦16,000</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-left">
+          <div class="item-name">Spring Rolls</div>
+          <div class="item-desc">Deep-fried rolls filled with sautéed vegetables, served with hot sweet-sour sauce.</div>
+        </div>
+        <div class="item-dots"></div>
+        <div class="item-price">₦9,000</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-left">
+          <div class="item-name">Crispy Calamari</div>
+          <div class="item-desc">Golden fried battered calamari, served with spicy tomato sauce.</div>
+        </div>
+        <div class="item-dots"></div>
+        <div class="item-price">₦11,000</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-left">
+          <div class="item-name">Samosa</div>
+          <div class="item-desc">Deep-fried pastry with savoury filling, served with hot chili sauce.</div>
+          <div class="item-variants">
+            <div class="variant">
+              <span class="variant-label">Chicken</span>
+              <span class="variant-price">₦9,000</span>
+            </div>
+            <div class="variant">
+              <span class="variant-label">Beef</span>
+              <span class="variant-price">₦9,000</span>
+            </div>
+            <div class="variant">
+              <span class="variant-label">Vegetable</span>
+              <span class="variant-price">₦10,000</span>
+            </div>
+            <div class="variant">
+              <span class="variant-label">Shrimp</span>
+              <span class="variant-price">₦16,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAINS -->
+    <div class="menu-section">
+      <div class="menu-section-title">Main Courses</div>
+      <div class="menu-item">
+        <div class="item-left">
+          <div class="item-name">Shrimp Main</div>
+          <div class="item-desc">Signature preparation, served to order.</div>
+        </div>
+        <div class="item-dots"></div>
+        <div class="item-price">₦28,000</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-left">
+          <div class="item-name">Chicken Main</div>
+          <div class="item-desc">Signature preparation, served to order.</div>
+        </div>
+        <div class="item-dots"></div>
+        <div class="item-price">₦15,000</div>
+      </div>
+      <div class="menu-item">
+        <div class="item-left">
+          <div class="item-name">Chef's Selection</div>
+          <div class="item-desc">Ask your server for today's preparation.</div>
+        </div>
+        <div class="item-dots"></div>
+        <div class="item-price">From ₦17,000</div>
+      </div>
+    </div>
+
+    <div class="notice-bar">
+      All prices inclusive of 10% Service Charge, 5% Consumption Tax and 7.5% VAT.<br>
+      Prices are subject to change without prior notice. All prices are in Naira.<br>
+      We are not responsible for lost or stolen items. We reserve the right to refuse service to anyone.
+    </div>
+
+    <p style="text-align:center; font-size:10px; color:var(--text-muted); letter-spacing:0.15em;">Follow us: @chocolatroyal</p>
+  </div>
+</div>
+
+<!-- ═══ TAB 3: BRAND SPECS ═══ -->
+<div id="specs" class="tab-panel">
+  <div style="max-width:900px; margin:0 auto; padding:40px 30px 20px; text-align:center;">
+    <div class="section-label">Brand Identity Specifications</div>
+  </div>
+  <div class="spec-grid">
+
+    <!-- COLOUR PALETTE -->
+    <div class="spec-card">
+      <div class="spec-card-title">Colour Palette</div>
+      <div class="colour-row">
+        <div class="colour-dot" style="background:#120800;"></div>
+        <div class="colour-info">
+          <div class="colour-name">Midnight Chocolate</div>
+          <div class="colour-codes">HEX #120800 · CMYK 93/72/56/95</div>
+        </div>
+      </div>
+      <div class="colour-row">
+        <div class="colour-dot" style="background:#4a1c04;"></div>
+        <div class="colour-info">
+          <div class="colour-name">Rich Cocoa</div>
+          <div class="colour-codes">HEX #4a1c04 · CMYK 47/73/88/70</div>
+        </div>
+      </div>
+      <div class="colour-row">
+        <div class="colour-dot" style="background:#c9a227;"></div>
+        <div class="colour-info">
+          <div class="colour-name">Imperial Gold</div>
+          <div class="colour-codes">HEX #c9a227 · PMS 7755 C · CMYK 14/29/90/4</div>
+        </div>
+      </div>
+      <div class="colour-row">
+        <div class="colour-dot" style="background:#f5e6cc;"></div>
+        <div class="colour-info">
+          <div class="colour-name">Warm Cream</div>
+          <div class="colour-codes">HEX #f5e6cc · CMYK 3/9/21/0</div>
+        </div>
+      </div>
+      <div class="colour-row">
+        <div class="colour-dot" style="background:#c97b6a;"></div>
+        <div class="colour-info">
+          <div class="colour-name">Rose Praline (Accent)</div>
+          <div class="colour-codes">HEX #c97b6a · CMYK 12/54/47/6</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div class="spec-card">
+      <div class="spec-card-title">Typography System</div>
+      <div class="font-sample">
+        <div class="font-role">Display / Headlines</div>
+        <div class="font-display">Playfair Display</div>
+        <div style="font-size:10px; color:var(--text-muted); margin-top:4px; font-family:Montserrat;">Weights 400, 500, 700 — Use for brand name, menu section titles, packaging headlines</div>
+      </div>
+      <div class="font-sample">
+        <div class="font-role">Accent / Subheadings</div>
+        <div class="font-display-2">Cormorant Garamond Italic</div>
+        <div style="font-size:10px; color:var(--text-muted); margin-top:4px; font-family:Montserrat;">Weights 300–400 — Use for taglines, item descriptions, evocative copy</div>
+      </div>
+      <div class="font-sample">
+        <div class="font-role">Body / UI</div>
+        <div class="font-body">Montserrat Light / Regular</div>
+        <div style="font-size:10px; color:var(--text-muted); margin-top:4px;">Weights 300, 400, 600 — Notices, labels, metadata, social bios</div>
+      </div>
+    </div>
+
+    <!-- DELIVERABLES -->
+    <div class="spec-card">
+      <div class="spec-card-title">Phase 1 Deliverables</div>
+      <ul class="deliverable-list">
+        <li>Logo redesign — 5 variants (full colour, reversed, mono, emblem, favicon)</li>
+        <li>Brand guidelines PDF (logo usage, colours, typography, photography direction)</li>
+        <li>Food menu redesign — A3 landscape, print-ready PDF/X-1a, CMYK 300dpi</li>
+        <li>Digital menu — mobile-optimised HTML version</li>
+        <li>Business card — front + back, 300dpi with 3mm bleed</li>
+        <li>Instagram post template set (9 templates)</li>
+        <li>Instagram Story template set (4 templates)</li>
+      </ul>
+    </div>
+
+    <!-- PACKAGING -->
+    <div class="spec-card">
+      <div class="spec-card-title">Phase 2 Deliverables</div>
+      <ul class="deliverable-list">
+        <li>Takeaway box — 2-size dieline with structural print specs</li>
+        <li>Branded paper bag — kraft + foil-blocked design spec</li>
+        <li>Coffee cup sleeve — 300gsm, full-wrap design</li>
+        <li>Napkin / serviette band — wrap design</li>
+        <li>Table tent card — A5 folded, 2-side design</li>
+        <li>Staff uniform mockup — logo placement spec for apron + polo</li>
+        <li>Loyalty card — credit card size, front + back</li>
+      </ul>
+    </div>
+
+    <!-- PHOTOGRAPHY -->
+    <div class="spec-card" style="grid-column: 1 / -1;">
+      <div class="spec-card-title">Photography Direction</div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:20px; margin-top:8px;">
+        <div>
+          <div style="font-size:10px; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">Lighting</div>
+          <div style="font-size:12px; color:var(--text-light); font-weight:300; line-height:1.7;">Warm, directional natural light. Deep shadows. No harsh white studio light. Chiaroscuro-inspired depth.</div>
+        </div>
+        <div>
+          <div style="font-size:10px; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">Props &amp; Surfaces</div>
+          <div style="font-size:12px; color:var(--text-light); font-weight:300; line-height:1.7;">Dark marble, aged wood, linen napkins. Gold cutlery. No plastic props. No sterile white surfaces.</div>
+        </div>
+        <div>
+          <div style="font-size:10px; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">Colour Grade</div>
+          <div style="font-size:12px; color:var(--text-light); font-weight:300; line-height:1.7;">Warm shadow tones. Lifted highlights. Rich, film-like contrast. Avoid oversaturation or cool-toned filters.</div>
+        </div>
+        <div>
+          <div style="font-size:10px; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">Composition</div>
+          <div style="font-size:12px; color:var(--text-light); font-weight:300; line-height:1.7;">Rule of thirds. Negative space is a feature, not wasted space. Mix overhead flat lay with 45° hero shots.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TAB 4: PACKAGING ═══ -->
+<div id="packaging" class="tab-panel">
+  <div style="max-width:900px; margin:0 auto; padding:40px 30px 20px; text-align:center;">
+    <div class="section-label">Packaging System</div>
+    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--text-muted); margin-bottom:40px;">Every touchpoint is a brand impression. Packaging should feel like receiving a gift.</p>
+  </div>
+  <div class="packaging-wrapper">
+
+    <div class="packaging-item">
+      <div class="pkg-icon">🍫</div>
+      <div>
+        <div class="pkg-subtitle">Primary Packaging</div>
+        <div class="pkg-title">Signature Takeaway Box</div>
+        <div class="pkg-desc">Two-piece rigid setup box in deep chocolate brown (Pantone 476 C) with a Warm Cream interior lining. Foil-blocked "Chocolat Royal" logo on the lid in Imperial Gold. Available in two sizes: Small (22×15×8cm) and Large (30×22×10cm). Sealed with a branded sticker or ribbon tie.</div>
+        <div class="pkg-spec">
+          <span class="tag">Board: 2mm Greyboard</span>
+          <span class="tag">Surface: Matte Lam + Gold Foil</span>
+          <span class="tag">CMYK Print</span>
+          <span class="tag">Pantone 476 C</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="packaging-item">
+      <div class="pkg-icon">🛍</div>
+      <div>
+        <div class="pkg-subtitle">Carry Packaging</div>
+        <div class="pkg-title">Kraft Paper Carrier Bag</div>
+        <div class="pkg-desc">Unbleached natural kraft bag with a dark chocolate tissue paper interior. Logo printed in Imperial Gold (metallic ink or foil stamp) on front face. Rope handle in chocolate-dyed cotton. Two sizes: A4 and A3 portrait. A paper bag should feel like part of the experience, not an afterthought.</div>
+        <div class="pkg-spec">
+          <span class="tag">160gsm Kraft</span>
+          <span class="tag">Metallic Ink / Hot Stamp</span>
+          <span class="tag">Cotton Rope Handle</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="packaging-item">
+      <div class="pkg-icon">☕</div>
+      <div>
+        <div class="pkg-subtitle">Beverages</div>
+        <div class="pkg-title">Cup Sleeve + Lid Label</div>
+        <div class="pkg-desc">300gsm cup sleeve in cream with a deep chocolate strip at top and bottom. "Chocolat Royal" in Playfair Display, with the cupped-flower logo emblem centred. A small removable sticker (40mm round) applied to the lid lid identifies the drink type and personalises the order. Both elements act as brand touchpoints during carry.</div>
+        <div class="pkg-spec">
+          <span class="tag">300gsm Coated Board</span>
+          <span class="tag">1-Colour Flexo Print</span>
+          <span class="tag">Lid Sticker: 40mm Round</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="packaging-item">
+      <div class="pkg-icon">🎀</div>
+      <div>
+        <div class="pkg-subtitle">Finishing &amp; Sealing</div>
+        <div class="pkg-title">Brand Seal Sticker + Ribbon</div>
+        <div class="pkg-desc">A 55mm circular wax-style seal sticker in gold, embossed with the CR monogram. Applied to takeaway bags and boxes as a premium closure. Alternatively, a 10mm wide gold satin ribbon with the brand name woven in — used on gift-grade orders and celebration packages. Small details that signal quality before the guest opens anything.</div>
+        <div class="pkg-spec">
+          <span class="tag">Gold Foil Sticker</span>
+          <span class="tag">Embossed CR Monogram</span>
+          <span class="tag">Woven Satin Ribbon Option</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="packaging-item">
+      <div class="pkg-icon">🪪</div>
+      <div>
+        <div class="pkg-subtitle">Loyalty Programme</div>
+        <div class="pkg-title">Royal Member Card</div>
+        <div class="pkg-desc">Credit-card-format loyalty card in matte laminated 600gsm board. Front: logo, member name in gold foil, dark chocolate background. Back: stamp grid (10 visits = 1 complimentary item), social handles, and a QR code linking to the loyalty portal. A card worth keeping in your wallet.</div>
+        <div class="pkg-spec">
+          <span class="tag">600gsm Board</span>
+          <span class="tag">Matte Lam</span>
+          <span class="tag">Spot UV + Gold Foil</span>
+          <span class="tag">85.6 × 53.98mm</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DOWNLOAD -->
+<div class="download-area">
+  <button class="btn-download" onclick="downloadConcept()">
+    ↓ Download Brand Concept Brief
+  </button>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function downloadConcept() {
+  const content = `CHOCOLAT ROYAL — BRAND CONCEPT BRIEF
+======================================
+
+BRAND DIRECTION: Dark Chocolatier Luxury
+Positioning: European-influenced premium dining for the Lagos market
+
+COLOUR PALETTE
+--------------
+Midnight Chocolate   #120800   CMYK 93/72/56/95
+Rich Cocoa           #4a1c04   CMYK 47/73/88/70
+Imperial Gold        #c9a227   CMYK 14/29/90/4   PMS 7755 C
+Warm Cream           #f5e6cc   CMYK 3/9/21/0
+Rose Praline         #c97b6a   CMYK 12/54/47/6
+
+TYPOGRAPHY
+----------
+Display:   Playfair Display (400, 500, 700)
+Accent:    Cormorant Garamond Italic (300, 400)
+Body/UI:   Montserrat (300, 400, 600)
+
+PHASE 1 DELIVERABLES
+--------------------
+• Logo redesign — 5 variants
+• Brand guidelines PDF
+• Food menu — A3 landscape, print-ready PDF/X-1a
+• Digital menu — mobile HTML
+• Business card
+• Instagram post template set (9 templates)
+• Instagram Story templates (4 templates)
+
+PHASE 2 DELIVERABLES
+--------------------
+• Takeaway box — 2 sizes, dieline + print spec
+• Kraft paper carrier bag
+• Coffee cup sleeve + lid label
+• Napkin band
+• Table tent card
+• Uniform mockup
+• Loyalty card
+
+PRINT STANDARDS
+---------------
+Colour mode: CMYK throughout
+Resolution: 300 DPI at final size
+Bleed: 3mm all sides
+Safe zone: 3mm inside trim
+Format: PDF/X-1a
+
+FILE NAMING: ChocolatRoyal_[Asset]_v[N]_[Status].[ext]
+Example: ChocolatRoyal_Menu_v2_PrintReady.pdf
+
+BRAND VOICE
+-----------
+Tone: Quietly confident, indulgent, sophisticated
+Avoid: Generic, overly casual, discount-signalling language
+Photography: Warm, directional light. Dark surfaces. Gold accents.
+
+Social: @chocolatroyal`;
+
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ChocolatRoyal_BrandBrief.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
