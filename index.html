@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Chocolat Royal — Brand Board</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   DESIGN TOKENS — Light Pink Forward
+═══════════════════════════════════════════════════════════ */
+:root {
+  --bg:          #fce8ef;
+  --bg2:         #f7d8e2;
+  --bg3:         #f2c8d6;
+  --stripe-dk:   #c96882;
+  --stripe-md:   #e8a0b4;
+  --stripe-lt:   #f5cdd8;
+  --rose:        #c96882;
+  --rose-bright: #e07a8e;
+  --rose-light:  #e8a0b4;
+  --rose-pale:   #f7d8e2;
+  --choc:        #2c1008;
+  --choc-warm:   #5c2a18;
+  --gold:        #c4a456;
+  --gold-bright: #d9bc70;
+  --gold-pale:   #eedfa0;
+  --cream:       #2c1008;
+  --berry:       #7a2e42;
+  --text-main:   #2c1008;
+  --text-soft:   #6b3042;
+  --text-muted:  #9a6070;
+  --text-gold:   #9a7820;
+
+  --ff-script:   'Great Vibes', cursive;
+  --ff-display:  'Playfair Display', Georgia, serif;
+  --ff-accent:   'Cormorant Garamond', Georgia, serif;
+  --ff-body:     'Montserrat', 'Helvetica Neue', sans-serif;
+
+  /* Fluid spacing scale */
+  --space-xs:  clamp(4px,  0.5vw, 8px);
+  --space-sm:  clamp(8px,  1vw, 14px);
+  --space-md:  clamp(14px, 2vw, 22px);
+  --space-lg:  clamp(22px, 3vw, 36px);
+  --space-xl:  clamp(36px, 5vw, 60px);
+  --space-2xl: clamp(60px, 8vw, 100px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: var(--ff-body);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   STICKY NAV — Enhanced Responsive
+═══════════════════════════════════════════════════════════ */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--bg);
+  border-bottom: 2px solid rgba(196,104,130,0.35);
+  display: flex; align-items: stretch;
+  justify-content: space-between;
+  padding: 0 clamp(12px, 2.5vw, 32px);
+  box-shadow: 0 2px 12px rgba(201,104,130,0.12);
+}
+.nav-brand {
+  font-family: var(--ff-script);
+  font-size: clamp(20px, 2.5vw, 26px);
+  color: var(--choc);
+  display: flex; align-items: center;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.nav-brand em { color: var(--gold); font-style: normal; }
+
+/* Mobile menu toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  margin-left: auto;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--rose);
+  margin: 5px 0;
+  transition: all 0.3s;
+  border-radius: 1px;
+}
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.nav-tabs {
+  display: flex;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+}
+.nav-tab {
+  padding: clamp(12px, 1.5vw, 18px) clamp(10px, 1.5vw, 22px);
+  font-family: var(--ff-body);
+  font-size: clamp(7.5px, 0.85vw, 10px);
+  font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--text-muted);
+  border: none; background: none; cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.25s; margin-bottom: -2px;
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+.nav-tab.active, .nav-tab:hover {
+  color: var(--rose);
+  border-bottom-color: var(--rose);
+}
+
+/* Nav responsive */
+@media (max-width: 768px) {
+  .nav { flex-wrap: wrap; padding: 0 16px; }
+  .nav-brand { padding: 10px 0; }
+  .nav-toggle { display: block; }
+  .nav-tabs {
+    width: 100%;
+    flex-direction: column;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    border-top: 1px solid transparent;
+  }
+  .nav-tabs.open {
+    max-height: 400px;
+    opacity: 1;
+    border-top-color: rgba(196,104,130,0.2);
+    padding-bottom: 8px;
+  }
+  .nav-tab {
+    padding: 14px 16px;
+    font-size: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(196,104,130,0.1);
+    margin-bottom: 0;
+  }
+  .nav-tab.active {
+    background: rgba(201,104,130,0.08);
+    border-bottom-color: rgba(196,104,130,0.1);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .nav-tab { padding: 14px 12px; font-size: 8px; letter-spacing: 0.16em; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PANELS
+═══════════════════════════════════════════════════════════ */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ═══════════════════════════════════════════════════════════
+   STRIPE BAR
+═══════════════════════════════════════════════════════════ */
+.stripe-bar {
+  height: clamp(16px, 2vw, 22px);
+  display: flex; overflow: hidden; position: relative;
+}
+.stripe-bar .s { flex: 1; }
+.stripe-bar::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent);
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GOLD RULE
+═══════════════════════════════════════════════════════════ */
+.gold-rule {
+  display: flex; align-items: center; gap: 14px;
+  max-width: min(420px, 90vw);
+  margin: 0 auto clamp(20px, 3vw, 30px);
+}
+.gold-rule::before, .gold-rule::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.gold-rule span {
+  font-size: clamp(7.5px, 0.85vw, 9px); font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--text-gold); white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PANEL 1 — BRAND CONCEPT (Hero)
+═══════════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: clamp(40px, 8vw, 80px) clamp(16px, 3vw, 32px);
+  position: relative; overflow: hidden;
+}
+.hero-stripes {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 50%; display: flex; overflow: hidden; z-index: 0;
+}
+.hero-stripes .s { flex: 1; }
+.hero-stripes::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(252,232,239,0.85) 100%);
+  pointer-events: none;
+}
+.hero-lower {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 53%;
+  background: var(--bg);
+  clip-path: polygon(0 14%, 100% 0%, 100% 100%, 0 100%);
+  z-index: 0;
+}
+.hero-scallop {
+  position: absolute; z-index: 1;
+  top: 44%; left: 0; right: 0; line-height: 0;
+}
+.hero-scallop svg {
+  display: block;
+  width: 100%;
+  height: clamp(28px, 3vw, 38px);
+}
+.hero-content { position: relative; z-index: 2; width: 100%; max-width: 800px; }
+
+.location-tag {
+  font-size: clamp(8px, 1vw, 9px); font-weight: 600;
+  letter-spacing: 0.42em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: clamp(16px, 2.5vw, 24px);
+}
+.hero-h1 {
+  font-family: var(--ff-script);
+  font-size: clamp(40px, 10vw, 96px);
+  color: var(--choc); letter-spacing: 0.04em;
+  line-height: 1; margin-bottom: 8px;
+}
+.hero-h1 em { color: var(--gold); font-style: normal; }
+.hero-tagline {
+  font-family: var(--ff-accent); font-style: italic;
+  font-size: clamp(13px, 1.5vw, 15px);
+  color: var(--text-soft);
+  letter-spacing: 0.16em;
+  margin-bottom: clamp(28px, 4vw, 40px);
+}
+.brand-direction {
+  font-family: var(--ff-accent); font-style: italic;
+  font-size: clamp(14px, 1.4vw, 16px);
+  color: var(--text-soft);
+  max-width: min(560px, 90vw);
+  margin: 0 auto clamp(36px, 5vw, 50px);
+  line-height: 1.85;
+  padding: 0 clamp(12px, 2vw, 24px);
+}
+.palette-strip {
+  display: flex;
+  max-width: min(500px, 92vw);
+  margin: 0 auto;
+  border-radius: 6px; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(201,104,130,0.2);
+}
+.pal-swatch {
+  flex: 1; height: clamp(52px, 8vw, 68px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  padding-bottom: 8px;
+  min-width: 0;
+}
+.pal-swatch span {
+  font-size: clamp(7px, 0.8vw, 8px); font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: rgba(255,255,255,0.82);
+}
+
+/* Hero logo */
+.hero-logo-wrap {
+  margin-bottom: clamp(20px, 3vw, 28px);
+}
+.hero-logo-wrap img {
+  width: clamp(120px, 20vw, 176px);
+  height: clamp(120px, 20vw, 176px);
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #c4a456;
+  box-shadow: 0 0 0 5px rgba(252,232,239,0.7), 0 0 30px rgba(201,104,130,0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PANEL 2 — MENU (Layout Preserved Exactly)
+═══════════════════════════════════════════════════════════ */
+.menu-wrap {
+  max-width: 900px; margin: 0 auto;
+  padding: clamp(36px, 5vw, 60px) clamp(16px, 3vw, 40px) clamp(60px, 8vw, 100px);
+}
+
+.menu-hd { text-align: center; margin-bottom: clamp(28px, 4vw, 44px); }
+.menu-eyebrow {
+  font-size: clamp(8px, 1vw, 9px); font-weight: 600;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--text-gold); margin-bottom: 12px;
+}
+.menu-h1 {
+  font-family: var(--ff-script);
+  font-size: clamp(32px, 7vw, 68px);
+  color: var(--choc); line-height: 1; margin-bottom: 6px;
+}
+.menu-h1 em { color: var(--gold); font-style: normal; }
+.menu-sub {
+  font-family: var(--ff-accent); font-style: italic;
+  font-size: clamp(12px, 1.4vw, 13px);
+  color: var(--text-soft);
+  letter-spacing: 0.12em;
+}
+
+.cat { margin-bottom: clamp(36px, 4vw, 52px); }
+.cat-title {
+  font-size: clamp(9px, 1vw, 10px); font-weight: 700;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--rose); margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(201,104,130,0.3);
+  display: flex; align-items: center; gap: 12px;
+}
+.cat-title::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(201,104,130,0.3), transparent);
+}
+
+.item {
+  display: flex; align-items: baseline;
+  padding: clamp(10px, 1.5vw, 14px) 0;
+  border-bottom: 1px solid rgba(201,104,130,0.12);
+  transition: background 0.15s, padding 0.15s;
+}
+.item:last-child { border-bottom: none; }
+.item:hover {
+  background: rgba(201,104,130,0.06);
+  padding-left: 8px; padding-right: 8px;
+  margin: 0 -8px; border-radius: 2px;
+}
+.item-left { flex: 1; min-width: 0; }
+.item-name {
+  font-family: var(--ff-display);
+  font-size: clamp(14px, 1.6vw, 16px); font-weight: 500;
+  color: var(--choc); margin-bottom: 5px;
+}
+.item-desc {
+  font-size: clamp(10.5px, 1.15vw, 11.5px); font-weight: 300;
+  font-family: var(--ff-accent); font-style: italic;
+  color: var(--text-soft); line-height: 1.6;
+  max-width: 540px;
+}
+.item-dots {
+  flex: 1; min-width: 20px;
+  border-bottom: 1px dotted rgba(201,104,130,0.25);
+  margin: 0 clamp(8px, 1.2vw, 14px); margin-bottom: 5px;
+}
+.item-price {
+  font-family: var(--ff-display);
+  font-size: clamp(15px, 1.6vw, 17px); font-weight: 400;
+  color: var(--text-gold); white-space: nowrap;
+}
+.item-price .curr { color: var(--rose); font-size: clamp(11px, 1.2vw, 13px); }
+
+.variants {
+  display: flex; flex-wrap: wrap;
+  gap: clamp(10px, 1.5vw, 18px); margin-top: 10px;
+}
+.vchip { display: flex; flex-direction: column; gap: 2px; }
+.vlbl {
+  font-size: clamp(7.5px, 0.85vw, 8.5px); font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.vprice { font-family: var(--ff-display); font-size: clamp(12px, 1.4vw, 14px); color: var(--text-gold); }
+
+.extras { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.etag {
+  font-size: clamp(8px, 0.9vw, 9px); font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--rose);
+  background: rgba(201,104,130,0.1);
+  border: 1px solid rgba(201,104,130,0.3);
+  padding: 4px 10px; border-radius: 2px;
+}
+
+.menu-notice {
+  text-align: center;
+  padding: clamp(16px, 2vw, 22px) clamp(16px, 2.5vw, 28px);
+  background: rgba(196,164,86,0.07);
+  border: 1px solid rgba(196,164,86,0.25);
+  margin: clamp(28px, 4vw, 44px) 0 28px;
+  font-size: clamp(9px, 1.1vw, 10px); font-weight: 300;
+  color: var(--text-muted); line-height: 1.9;
+}
+.menu-footer-text {
+  text-align: center;
+  font-size: clamp(9px, 1vw, 10px); letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PANEL 3 — BRAND SPECS (Responsive Grids)
+═══════════════════════════════════════════════════════════ */
+.specs-wrap {
+  max-width: 1060px; margin: 0 auto;
+  padding: clamp(36px, 5vw, 60px) clamp(16px, 3vw, 40px) clamp(60px, 8vw, 100px);
+}
+
+.specs-section-title {
+  font-size: clamp(8px, 1vw, 9px); font-weight: 700;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--text-gold); margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(196,164,86,0.3);
+  display: flex; align-items: center; gap: 12px;
+}
+.specs-section-title::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(196,164,86,0.3), transparent);
+}
+
+.colour-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 18vw, 170px), 1fr));
+  gap: 3px; margin-bottom: 44px;
+}
+.colour-card {
+  background: var(--bg2); border-radius: 4px; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.cc-swatch { height: clamp(80px, 12vw, 100px); position: relative; }
+.cc-swatch::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.1), transparent);
+}
+.cc-body { padding: clamp(14px, 2vw, 18px); }
+.cc-tag {
+  font-size: clamp(7px, 0.8vw, 8px); font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;
+}
+.cc-name {
+  font-family: var(--ff-display); font-size: clamp(14px, 1.6vw, 16px);
+  color: var(--choc); margin-bottom: 12px;
+}
+.cc-codes {
+  font-size: clamp(8px, 0.9vw, 9px); color: var(--text-soft); line-height: 1.8;
+  font-family: var(--ff-body); font-weight: 400;
+}
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(220px, 28vw, 260px), 1fr));
+  gap: clamp(20px, 3vw, 32px); margin-bottom: 60px;
+}
+.type-card {
+  border-left: 2px solid var(--rose-pale);
+  padding-left: clamp(16px, 2vw, 24px);
+}
+.tc-role {
+  font-size: clamp(8px, 0.9vw, 9px); font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px;
+}
+.ts-script { font-family: var(--ff-script); font-size: clamp(32px, 5vw, 42px); color: var(--choc); margin-bottom: 10px; }
+.ts-display { font-family: var(--ff-display); font-size: clamp(26px, 3.5vw, 32px); color: var(--choc); margin-bottom: 10px; }
+.ts-accent { font-family: var(--ff-accent); font-style: italic; font-size: clamp(22px, 3vw, 28px); color: var(--choc); margin-bottom: 10px; }
+.ts-body { font-family: var(--ff-body); font-size: clamp(14px, 1.5vw, 16px); line-height: 1.6; color: var(--choc); margin-bottom: 10px; }
+.tc-note { font-size: clamp(10px, 1.1vw, 11px); color: var(--text-soft); line-height: 1.6; }
+
+/* Deliverables grid */
+.deliv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 420px), 1fr));
+  gap: clamp(20px, 3vw, 32px);
+  margin-bottom: 60px;
+}
+.deliv-card {
+  background: var(--bg2);
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: 6px;
+}
+.dc-title {
+  font-family: var(--ff-display);
+  font-size: clamp(16px, 1.8vw, 18px);
+  color: var(--choc);
+  margin-bottom: clamp(12px, 1.5vw, 16px);
+  border-bottom: 1px solid var(--rose-pale);
+  padding-bottom: 8px;
+}
+.dc-list { list-style: none; }
+.dc-list li {
+  font-size: clamp(11px, 1.1vw, 12px);
+  color: var(--text-soft);
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.6;
+}
+.dc-list li::before {
+  content: '\2726';
+  position: absolute; left: 0;
+  color: var(--gold);
+  font-size: 10px;
+}
+
+/* Photography grid */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(220px, 30vw, 300px), 1fr));
+  gap: clamp(16px, 2.5vw, 24px);
+}
+.photo-card {
+  background: var(--bg2);
+  padding: clamp(18px, 2.5vw, 28px);
+  border-radius: 6px;
+}
+.phc-label {
+  font-size: clamp(8px, 0.9vw, 9px); font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-gold); margin-bottom: 10px;
+}
+.phc-desc {
+  font-size: clamp(11px, 1.1vw, 12px);
+  color: var(--text-soft); line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PANEL 4 — PACKAGING (Responsive Flex/Grid)
+═══════════════════════════════════════════════════════════ */
+.pkg-wrap {
+  max-width: 900px; margin: 0 auto;
+  padding: clamp(36px, 5vw, 60px) clamp(16px, 3vw, 40px) clamp(60px, 8vw, 100px);
+}
+.pkg-intro {
+  max-width: min(500px, 90vw);
+  margin: 0 auto clamp(36px, 5vw, 50px);
+  font-family: var(--ff-accent); font-style: italic;
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--text-soft); line-height: 1.7;
+  text-align: center;
+}
+.pkg-item {
+  display: flex;
+  gap: clamp(20px, 3vw, 32px);
+  margin-bottom: clamp(32px, 5vw, 48px);
+  align-items: flex-start;
+}
+.pkg-icon-box {
+  width: clamp(48px, 8vw, 64px);
+  height: clamp(48px, 8vw, 64px);
+  min-width: clamp(48px, 8vw, 64px);
+  background: var(--bg3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: clamp(20px, 3vw, 28px);
+  flex-shrink: 0;
+  border: 1px solid var(--rose-pale);
+}
+.pkg-body { flex: 1; min-width: 0; }
+.pkg-sub {
+  font-size: clamp(8px, 0.9vw, 9px); font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-gold); margin-bottom: 4px;
+}
+.pkg-name {
+  font-family: var(--ff-display);
+  font-size: clamp(17px, 1.8vw, 20px);
+  color: var(--choc); margin-bottom: 10px;
+}
+.pkg-desc {
+  font-size: clamp(12px, 1.2vw, 13px);
+  color: var(--text-soft); line-height: 1.7;
+  margin-bottom: 16px;
+}
+.pkg-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.ptag {
+  font-size: clamp(8px, 0.85vw, 9px); font-weight: 500;
+  background: rgba(255,255,255,0.5);
+  padding: 4px 10px; border-radius: 2px;
+  color: var(--text-muted);
+  border: 1px solid var(--rose-pale);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PANEL 5 — BI-FOLD STRUCTURE (Responsive Grid)
+═══════════════════════════════════════════════════════════ */
+.bifold-wrap {
+  max-width: 1000px; margin: 0 auto;
+  padding: clamp(36px, 5vw, 60px) clamp(16px, 3vw, 40px) clamp(60px, 8vw, 100px);
+}
+.bifold-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 400px), 1fr));
+  gap: clamp(24px, 3.5vw, 40px);
+}
+.panel-spec {
+  background: var(--bg2);
+  padding: clamp(24px, 3vw, 35px);
+  border-radius: 6px;
+  border: 1px solid var(--rose-pale);
+}
+.panel-num {
+  font-size: clamp(9px, 1vw, 10px); font-weight: 700;
+  color: var(--gold); letter-spacing: 0.2em;
+  text-transform: uppercase; margin-bottom: 15px; display: block;
+}
+.panel-title {
+  font-family: var(--ff-display);
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--choc); margin-bottom: 20px;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 10px;
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+.spec-list { list-style: none; margin-bottom: 25px; }
+.spec-list li {
+  font-size: clamp(12px, 1.2vw, 13px);
+  color: var(--text-soft); margin-bottom: 12px;
+  padding-left: 20px; position: relative; line-height: 1.6;
+}
+.spec-list li::before { content: '\265B'; position: absolute; left: 0; color: var(--gold); font-size: 11px; }
+.design-rules-box {
+  background: var(--bg3);
+  padding: clamp(20px, 2.5vw, 25px);
+  border-radius: 4px; margin-top: 30px;
+  border: 1px dashed var(--rose);
+}
+.dr-title {
+  font-size: clamp(10px, 1.1vw, 11px); font-weight: 700;
+  color: var(--rose); text-transform: uppercase;
+  letter-spacing: 0.15em; margin-bottom: 15px; display: block;
+}
+.dr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 28vw, 280px), 1fr));
+  gap: clamp(16px, 2vw, 20px);
+}
+.dr-item { font-size: clamp(11px, 1.1vw, 12px); color: var(--text-main); }
+.dr-label { font-weight: 600; color: var(--text-gold); display: block; margin-bottom: 4px; }
+
+/* ═══════════════════════════════════════════════════════════
+   IDENTITY SECTION (Responsive)
+═══════════════════════════════════════════════════════════ */
+.identity-wrap {
+  max-width: 1060px; margin: 0 auto;
+  padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 40px);
+}
+.id-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(220px, 28vw, 280px), 1fr));
+  gap: clamp(16px, 2.5vw, 24px);
+}
+.id-card {
+  background: var(--bg2);
+  padding: clamp(24px, 3vw, 32px);
+  border-radius: 6px; text-align: center;
+}
+.id-lbl {
+  font-size: clamp(8px, 0.9vw, 9px); font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-gold); margin-bottom: 24px;
+}
+.id-card img {
+  width: clamp(100px, 15vw, 140px);
+  height: clamp(100px, 15vw, 140px);
+  border-radius: 50%; object-fit: cover;
+  margin-bottom: 20px; border: 2px solid var(--gold);
+}
+.id-desc {
+  font-size: clamp(11px, 1.1vw, 12px);
+  color: var(--text-soft); line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DOWNLOAD BAR — Responsive
+═══════════════════════════════════════════════════════════ */
+.dl-bar {
+  position: fixed;
+  bottom: clamp(16px, 3vw, 32px);
+  left: 50%; transform: translateX(-50%);
+  z-index: 300; display: flex; gap: clamp(8px, 1.2vw, 12px);
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 95vw;
+}
+.btn {
+  padding: clamp(12px, 1.5vw, 14px) clamp(20px, 2.5vw, 28px);
+  border-radius: 50px; cursor: pointer;
+  font-family: var(--ff-body);
+  font-size: clamp(8.5px, 1vw, 10px); font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  transition: all 0.3s; border: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-gold {
+  background: var(--gold); color: white;
+  box-shadow: 0 4px 15px rgba(196,164,86,0.4);
+}
+.btn-gold:hover { background: var(--gold-bright); transform: translateY(-2px); }
+.btn-outline {
+  background: white; color: var(--text-gold);
+  border: 1px solid var(--gold);
+}
+.btn-outline:hover { background: var(--bg); transform: translateY(-2px); }
+
+/* ═══════════════════════════════════════════════════════════
+   PRINT STYLES
+═══════════════════════════════════════════════════════════ */
+@media print {
+  .nav, .dl-bar, .nav-toggle { display: none !important; }
+  .panel { display: block !important; page-break-before: always; }
+  .panel:first-of-type { page-break-before: auto; }
+  .hero { min-height: auto; padding: 60px 32px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ACCESSIBILITY — Focus Styles
+═══════════════════════════════════════════════════════════ */
+button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   REDUCED MOTION
+═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION — Responsive with Mobile Toggle
+═══════════════════════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-brand">Chocolat <em>Royal</em></div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-tabs" id="navTabs">
+    <button class="nav-tab active" onclick="show('concept',this)">Brand Concept</button>
+    <button class="nav-tab"        onclick="show('menu',this)">Menu</button>
+    <button class="nav-tab"        onclick="show('specs',this)">Brand Specs</button>
+    <button class="nav-tab"        onclick="show('packaging',this)">Packaging</button>
+    <button class="nav-tab"        onclick="show('bifold',this)">Bi-Fold Structure</button>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PANEL 1 — BRAND CONCEPT
+═══════════════════════════════════════════════════════════ -->
+<div id="concept" class="panel active">
+
+  <section class="hero">
+
+    <!-- Stripe top -->
+    <div class="hero-stripes">
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-md);opacity:0.85"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-lt);opacity:0.7"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-md);opacity:0.85"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-lt);opacity:0.7"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-md);opacity:0.85"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-lt);opacity:0.7"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-md);opacity:0.85"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+    </div>
+    <div class="hero-lower"></div>
+
+    <!-- Scallop -->
+    <div class="hero-scallop">
+      <svg viewBox="0 0 1440 40" preserveAspectRatio="none">
+        <path d="M0,40 C0,40 0,18 36,18 C72,18 72,40 108,40 C144,40 144,18 180,18 C216,18 216,40 252,40 C288,40 288,18 324,18 C360,18 360,40 396,40 C432,40 432,18 468,18 C504,18 504,40 540,40 C576,40 576,18 612,18 C648,18 648,40 684,40 C720,40 720,18 756,18 C792,18 792,40 828,40 C864,40 864,18 900,18 C936,18 936,40 972,40 C1008,40 1008,18 1044,18 C1080,18 1080,40 1116,40 C1152,40 1152,18 1188,18 C1224,18 1224,40 1260,40 C1296,40 1296,18 1332,18 C1368,18 1368,40 1404,40 C1440,40 1440,18 1440,18 L1440,0 L0,0 Z" fill="#e8a0b4" opacity="0.9"/>
+        <path d="M0,40 C0,40 0,26 36,26 C72,26 72,40 108,40 C144,40 144,26 180,26 C216,26 216,40 252,40 C288,40 288,26 324,26 C360,26 360,40 396,40 C432,40 432,26 468,26 C504,26 504,40 540,40 C576,40 576,26 612,26 C648,26 648,40 684,40 C720,40 720,26 756,26 C792,26 792,40 828,40 C864,40 864,26 900,26 C936,26 936,40 972,40 C1008,40 1008,26 1044,26 C1080,26 1080,40 1116,40 C1152,40 1152,26 1188,26 C1224,26 1224,40 1260,40 C1296,40 1296,26 1332,26 C1368,26 1368,40 1404,40 C1440,40 1440,26 1440,26" stroke="#c4a456" stroke-width="0.9" fill="none" opacity="0.6"/>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="hero-content">
+
+      <!-- Logo -->
+      <div class="hero-logo-wrap">
+        <img src="chocolat-royal-logo.png"
+             alt="Chocolat Royal logo"
+             loading="eager">
+      </div>
+
+      <p class="location-tag">Est. Lagos, Nigeria</p>
+      <h1 class="hero-h1">Chocolat <em>Royal</em></h1>
+      <p class="hero-tagline">L'art de l'indulgence, raffine.</p>
+
+      <div class="gold-rule"><span>Brand Direction: Pink Chocolatier Luxury</span></div>
+
+      <p class="brand-direction">
+        A premium French confectionery and continental dining destination in Lagos - pink-forward and chocolate-anchored, elevated with champagne gold to signal quality without abandoning warmth.
+      </p>
+
+      <div class="palette-strip">
+        <div class="pal-swatch" style="background:#c96882;"><span>Rose</span></div>
+        <div class="pal-swatch" style="background:#e8a0b4;"><span>Dusty</span></div>
+        <div class="pal-swatch" style="background:#f5cdd8;"><span>Blush</span></div>
+        <div class="pal-swatch" style="background:#c4a456;"><span>Gold</span></div>
+        <div class="pal-swatch" style="background:#fce8ef;"><span style="color:rgba(44,16,8,0.5);">Petal</span></div>
+        <div class="pal-swatch" style="background:#2c1008;"><span>Choc</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stripe band -->
+  <div class="stripe-bar">
+    <div class="s" style="background:var(--stripe-dk);"></div>
+    <div class="s" style="background:var(--stripe-md);opacity:0.85"></div>
+    <div class="s" style="background:var(--stripe-dk);"></div>
+    <div class="s" style="background:var(--stripe-lt);opacity:0.7"></div>
+    <div class="s" style="background:var(--stripe-dk);"></div>
+    <div class="s" style="background:var(--stripe-md);opacity:0.85"></div>
+    <div class="s" style="background:var(--stripe-dk);"></div>
+    <div class="s" style="background:var(--stripe-lt);opacity:0.7"></div>
+    <div class="s" style="background:var(--stripe-dk);"></div>
+    <div class="s" style="background:var(--stripe-md);opacity:0.85"></div>
+    <div class="s" style="background:var(--stripe-dk);"></div>
+    <div class="s" style="background:var(--stripe-lt);opacity:0.7"></div>
+  </div>
+
+  <!-- Logo Identity Row -->
+  <div class="identity-wrap">
+    <div style="text-align:center;margin-bottom:clamp(24px, 3.5vw, 32px);">
+      <div class="gold-rule"><span>Logo - Always Unchanged</span></div>
+    </div>
+    <div class="id-row">
+      <div class="id-card master">
+        <div class="id-lbl">Master Mark</div>
+        <img src="chocolat-royal-logo.png" alt="Chocolat Royal">
+        <div class="id-desc">Original logo - identical on every touchpoint. Never recoloured or altered.</div>
+      </div>
+      <div class="id-card sweet">
+        <div class="id-lbl">Patisserie - Sweet Counter</div>
+        <img src="chocolat-royal-logo.png" alt="Chocolat Royal">
+        <div class="id-desc">Patisserie &amp; Chocolaterie<br>Pink &middot; Ivory &middot; Cacao surround</div>
+      </div>
+      <div class="id-card dining">
+        <div class="id-lbl">Brasserie - Dining Room</div>
+        <img src="chocolat-royal-logo.png" alt="Chocolat Royal">
+        <div class="id-desc">Brasserie &amp; Salon de The<br>Dark Chocolate &middot; Gold surround</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PANEL 2 — MENU (Layout Preserved Exactly)
+═══════════════════════════════════════════════════════════ -->
+<div id="menu" class="panel">
+  <div class="menu-wrap">
+
+    <div class="stripe-bar" style="margin:clamp(-40px, -5vw, -60px) clamp(-20px, -3vw, -40px) 40px; width:calc(100% + clamp(32px, 6vw, 80px));">
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-md);"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-lt);"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-md);"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-lt);"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-md);"></div>
+      <div class="s" style="background:var(--stripe-dk);"></div>
+      <div class="s" style="background:var(--stripe-lt);"></div>
+    </div>
+
+    <div class="menu-hd">
+      <div class="gold-rule"><span>Signature Menu</span></div>
+      <h2 class="menu-h1">Chocolat <em>Royal</em></h2>
+      <p class="menu-sub">French Confectionery &amp; Continental Dining</p>
+      <p style="margin-top:10px;font-size:clamp(9px, 1vw, 10px);font-weight:300;color:var(--text-muted);letter-spacing:0.04em;">All prices are listed in Naira and are inclusive of a 10% Service Charge, 5% Consumption Tax, and 7.5% VAT.</p>
+    </div>
+
+    <!-- THE BREAKFAST COLLECTION -->
+    <div class="cat">
+      <div class="cat-title">The Breakfast Collection</div>
+      <div class="item"><div class="item-left"><div class="item-name">English Breakfast</div><div class="item-desc">Eggs prepared to your preference (Fried, Scrambled, or Omelette), Hash Brown Potato, choice of Pork Breakfast Sausages or Chicken Frankfurters, Baked Beans, Toast Bread with Butter, and a choice of two toppings. Served with your choice of Coffee, Tea, or Orange Juice.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>20,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Nigerian Breakfast</div><div class="item-desc">Egg Sauce, Stewed Beans, Fried Yam, Plantain, and Toast Bread with Butter. Served with your choice of Coffee, Tea, or Orange Juice.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>14,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">The Classic Omelette</div><div class="item-desc">Served with Toast Bread and Butter.</div><div class="extras"><span class="etag">Ham &#8358;4,000</span><span class="etag">Bacon &#8358;3,500</span><span class="etag">Cheese &#8358;4,000</span><span class="etag">Mushrooms &#8358;3,000</span></div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>6,000</div></div>
+    </div>
+
+    <!-- APPETIZERS & STARTERS -->
+    <div class="cat">
+      <div class="cat-title">Appetizers &amp; Starters</div>
+      <div class="item"><div class="item-left"><div class="item-name">Popcorn Shrimps</div><div class="item-desc">Breaded fried Shrimps served with Spicy Tomato Sauce.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>16,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Shrimp Spring Rolls</div><div class="item-desc">Deep-fried rolls with sauteed vegetables, served with Hot Sweet-Sour Sauce.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>16,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Crispy Calamari</div><div class="item-desc">Golden fried battered Calamari served with Spicy Tomato Sauce.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>11,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Vegetable Spring Rolls</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>10,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Buffalo Chicken Wings</div><div class="item-desc">Spiced wings served with Blue Cheese or Spicy Tomato Sauce.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>9,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Cajun Chicken Strips</div><div class="item-desc">Fried breaded strips served with Honey Mustard Sauce.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>9,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Artisanal Samosas</div><div class="item-desc">Choice of Chicken or Beef filling served with Hot Chili Sauce.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>9,000</div></div>
+    </div>
+
+    <!-- THE SALAD ATELIER -->
+    <div class="cat">
+      <div class="cat-title">The Salad Atelier</div>
+      <div class="item"><div class="item-left"><div class="item-name">Shrimp Caesar Salad</div><div class="item-desc">Crispy Romaine Lettuce, Roasted Garlic Croutons, and Grated Parmesan with Signature Caesar Dressing.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>28,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Nicoise Salad</div><div class="item-desc">Tuna, Lettuce, Potatoes, French Beans, Black Olives, Eggs, and Anchovies with Lemon Mustard or Balsamic Vinaigrette.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>17,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Chicken Caesar Salad</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>15,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Chef Salad</div><div class="item-desc">Ham, Swiss Cheese, Hard-Boiled Eggs, Lettuce, Tomatoes, Cucumbers, and Corn with your choice of dressing.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>15,000</div></div>
+    </div>
+
+    <!-- BURGERS & SIGNATURE SANDWICHES -->
+    <div class="cat">
+      <div class="cat-title">Burgers &amp; Signature Sandwiches</div>
+      <div class="item"><div class="item-left"><div class="item-name">The Royal Club</div><div class="item-desc">Smoked Turkey or Chicken Salad, Ham, Bacon, Swiss Cheese, Lettuce, Tomatoes, and Mayonnaise. Served with Coleslaw and French Fries.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>22,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">The Classic Burger with Cheese</div><div class="item-desc">Charbroiled Ground Beef, Lettuce, Tomatoes, Onions, Pickles, Ketchup, and Mayonnaise. Served with Coleslaw and French Fries.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>21,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">The Philly Cheese Steak</div><div class="item-desc">Thinly sliced Steak sauteed with Bell Peppers, Onions, and Mushrooms, topped with melted Cheese. Served with French Fries.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>20,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Cajun Chicken Burger</div><div class="item-desc">Breaded or Grilled Boneless Breast with Royal Sauce and Pickles.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>17,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Spicy Shrimp Sandwich</div><div class="item-desc">Marinated Grilled Shrimp in Ginger and Coriander with Cucumber and Spring Onion.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>17,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Gourmet Deli Sandwiches</div><div class="item-desc">Choice of Chicken Salad, Tuna Salad, or Ham/Turkey &amp; Cheese.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>15,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Vegetarian Special</div><div class="item-desc">Grilled Eggplant, Zucchini, and Sauteed Carrots with Balsamic Vinaigrette.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>15,000</div></div>
+    </div>
+
+    <!-- MAIN ENTREES & PASTA -->
+    <div class="cat">
+      <div class="cat-title">Main Entrees &amp; Pasta</div>
+      <div class="item"><div class="item-left"><div class="item-name">Pasta Carbonara</div><div class="item-desc">Tagliatelle with Sauteed Bacon bites in a rich Creamy Cheese Sauce.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>22,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Creole Pasta with Shrimps</div><div class="item-desc">Tagliatelle in a Spicy Cream Sauce with White Wine, Bell Peppers, and Carrots.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>20,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Signature Suya (Chicken or Beef)</div><div class="item-desc">Grilled with Suya Spices, Onions, and Tomatoes. Served with French Fries.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>17,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Grilled Chicken Laps</div><div class="item-desc">Golden fried and served with Hot Tomato Sauce and Fries.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>17,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Spicy Grilled Chicken Breast</div><div class="item-desc">Marinated with Spicy Tomatoes and Pepper, served with Jollof Rice or Spaghetti.</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>15,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Spaghetti Bolognese</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>15,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Creole Pasta with Chicken</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>15,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Spicy Penne Arrabiatta</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>8,000</div></div>
+    </div>
+
+    <!-- SIDE ACCOMPANIMENTS -->
+    <div class="cat">
+      <div class="cat-title">Side Accompaniments</div>
+      <div class="item"><div class="item-left"><div class="item-name">Sauteed Veggies</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>6,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">French Fries</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>5,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Jollof Rice</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>5,000</div></div>
+      <div class="item"><div class="item-left"><div class="item-name">Coleslaw / Steamed Rice / Fried Plantain / Fried Yam</div></div><div class="item-dots"></div><div class="item-price"><span class="curr">&#8358;</span>3,000</div></div>
+    </div>
+
+    <div class="menu-notice">
+      All prices are listed in Naira and are inclusive of a 10% Service Charge, 5% Consumption Tax, and 7.5% VAT.<br>
+      Please note that prices are subject to change without prior notice.
+    </div>
+    <p class="menu-footer-text">Follow us: @chocolatroyal</p>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PANEL 3 — BRAND SPECS
+═══════════════════════════════════════════════════════════ -->
+<div id="specs" class="panel">
+  <div class="specs-wrap">
+
+    <div style="text-align:center;margin-bottom:44px;">
+      <div class="gold-rule"><span>Brand Identity Specifications</span></div>
+    </div>
+
+    <div class="specs-section-title">Colour Palette</div>
+    <div class="colour-grid">
+      <div class="colour-card"><div class="cc-swatch" style="background:#c96882;"></div><div class="cc-body"><div class="cc-tag">Hero Pink</div><div class="cc-name">Signature Rose</div><div class="cc-codes">HEX #c96882<br>CMYK 0/48/35/21<br>PMS 7523 C</div></div></div>
+      <div class="colour-card"><div class="cc-swatch" style="background:#e8a0b4;"></div><div class="cc-body"><div class="cc-tag">Secondary Pink</div><div class="cc-name">Dusty Rose</div><div class="cc-codes">HEX #e8a0b4<br>CMYK 0/31/22/9<br>PMS 9180 C</div></div></div>
+      <div class="colour-card"><div class="cc-swatch" style="background:#fce8ef;"></div><div class="cc-body"><div class="cc-tag">Main Background</div><div class="cc-name">Petal Blush</div><div class="cc-codes">HEX #fce8ef<br>CMYK 0/9/4/1<br>PMS 9183 C</div></div></div>
+      <div class="colour-card"><div class="cc-swatch" style="background:#f5cdd8;"></div><div class="cc-body"><div class="cc-tag">Panel / Card</div><div class="cc-name">Soft Blush</div><div class="cc-codes">HEX #f5cdd8<br>CMYK 0/16/9/4<br>PMS 9181 C</div></div></div>
+      <div class="colour-card"><div class="cc-swatch" style="background:#c4a456;"></div><div class="cc-body"><div class="cc-tag">Premium Accent</div><div class="cc-name">Champagne Gold</div><div class="cc-codes">HEX #c4a456<br>CMYK 0/15/57/23<br>PMS 7755 C</div></div></div>
+      <div class="colour-card"><div class="cc-swatch" style="background:#2c1008;"></div><div class="cc-body"><div class="cc-tag">Dark Anchor</div><div class="cc-name">Deep Chocolate</div><div class="cc-codes">HEX #2c1008<br>CMYK 0/58/73/83<br>PMS 477 C</div></div></div>
+      <div class="colour-card"><div class="cc-swatch" style="background:#5c2a18;"></div><div class="cc-body"><div class="cc-tag">Secondary Dark</div><div class="cc-name">Warm Chocolate</div><div class="cc-codes">HEX #5c2a18<br>CMYK 0/54/73/64<br>PMS 478 C</div></div></div>
+      <div class="colour-card"><div class="cc-swatch" style="background:#7a2e42;"></div><div class="cc-body"><div class="cc-tag">Depth Berry</div><div class="cc-name">Deep Berry</div><div class="cc-codes">HEX #7a2e42<br>CMYK 0/62/46/52<br>PMS 7421 C</div></div></div>
+    </div>
+
+    <div class="specs-section-title">Typography System</div>
+    <div class="type-grid">
+      <div class="type-card"><div class="tc-role">Script / Brand Name</div><div class="ts-script">Great Vibes</div><div class="tc-note"><strong>Use for:</strong> Brand name on all covers, packaging hero text, social media headline captions.<br><strong>Never below</strong> 18pt in print.</div></div>
+      <div class="type-card"><div class="tc-role">Display / Headlines</div><div class="ts-display">Playfair Display</div><div class="tc-note"><strong>Use for:</strong> Menu section titles, signage headings, social media secondary headlines.<br><strong>Weights:</strong> 400 Regular, 500 Medium, 700 Bold.</div></div>
+      <div class="type-card"><div class="tc-role">Accent / Subheadings</div><div class="ts-accent">Cormorant Garamond Italic</div><div class="tc-note"><strong>Use for:</strong> Item descriptions, French subtitle translations, taglines, captions.<br><strong>Weights:</strong> 300 Light Italic, 400 Regular Italic.</div></div>
+      <div class="type-card"><div class="tc-role">Body / UI</div><div class="ts-body">Montserrat Light / Regular - The workhorse. Legible at all sizes. Neutral enough to let the serif tiers lead.</div><div class="tc-note"><strong>Use for:</strong> Notices, labels, price codes, social bios, digital UI.<br><strong>Weights:</strong> 200, 300, 400, 600.</div></div>
+    </div>
+
+    <div class="specs-section-title">Deliverables</div>
+    <div class="deliv-grid">
+      <div class="deliv-card"><div class="dc-title">Phase 1</div><ul class="dc-list"><li>Logo usage guide - 5 approved variants (full colour, reversed, mono, emblem, favicon)</li><li>Brand guidelines PDF (logo, colours, typography, photography direction)</li><li>Food &amp; patisserie menu - A3 landscape, print-ready PDF/X-1a, CMYK 300dpi</li><li>Digital menu - mobile-optimised HTML version</li><li>Business card - front + back, 300dpi with 3mm bleed</li><li>Instagram post template set (9 templates)</li><li>Instagram Story template set (4 templates)</li></ul></div>
+      <div class="deliv-card"><div class="dc-title">Phase 2</div><ul class="dc-list"><li>Takeaway box - 2-size dieline with structural print specs</li><li>Branded paper bag - kraft + foil-blocked design spec</li><li>Coffee cup sleeve - 300gsm, full-wrap design</li><li>Napkin / serviette band - wrap design</li><li>Table tent card - A5 folded, 2-side design</li><li>Staff uniform mockup - logo placement spec for apron + polo</li><li>Loyalty card - credit card size, front + back</li></ul></div>
+    </div>
+
+    <div class="specs-section-title">Photography Direction</div>
+    <div class="photo-grid">
+      <div class="photo-card"><div class="phc-label">Lighting</div><div class="phc-desc">Warm, directional natural light. Deep shadows. No harsh white studio light. Chiaroscuro-inspired depth - candle warmth over flash brightness.</div></div>
+      <div class="photo-card"><div class="phc-label">Props &amp; Surfaces</div><div class="phc-desc">Dark marble, aged timber, linen napkins. Gold cutlery. Dusty rose ceramics where possible. No plastic props. No sterile white surfaces.</div></div>
+      <div class="photo-card"><div class="phc-label">Colour Grade</div><div class="phc-desc">Warm shadow tones. Lifted highlights. Rich, film-like contrast. Avoid oversaturation or cool filters. The image should feel like velvet.</div></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PANEL 4 — PACKAGING
+═══════════════════════════════════════════════════════════ -->
+<div id="packaging" class="panel">
+  <div class="pkg-wrap">
+
+    <div style="text-align:center;margin-bottom:44px;">
+      <div class="gold-rule"><span>Packaging System</span></div>
+      <div class="pkg-intro">
+        <p>Every touchpoint is a brand impression. Packaging should feel like receiving a gift.</p>
+      </div>
+    </div>
+
+    <div class="pkg-item"><div class="pkg-icon-box">&#127851;</div><div class="pkg-body"><div class="pkg-sub">Primary Packaging</div><div class="pkg-name">Signature Takeaway Box</div><div class="pkg-desc">Two-piece rigid setup box in deep chocolate brown (Pantone 477 C) with a Petal Blush interior lining. Foil-blocked "Chocolat Royal" logo on the lid in Champagne Gold. Available in two sizes: Small (22x15x8cm) and Large (30x22x10cm). Sealed with a branded sticker or ribbon tie.</div><div class="pkg-tags"><span class="ptag">Board: 2mm Greyboard</span><span class="ptag">Matte Lam + Gold Foil</span><span class="ptag">CMYK Print</span><span class="ptag">PMS 477 C</span></div></div></div>
+
+    <div class="pkg-item"><div class="pkg-icon-box">&#128717;</div><div class="pkg-body"><div class="pkg-sub">Carry Packaging</div><div class="pkg-name">Kraft Paper Carrier Bag</div><div class="pkg-desc">Unbleached natural kraft bag with a rose tissue paper interior. Logo printed in Champagne Gold (metallic ink or foil stamp) on front face. Rope handle in rose-dyed cotton. Two sizes: A4 and A3 portrait. The bag is part of the experience, not an afterthought.</div><div class="pkg-tags"><span class="ptag">160gsm Kraft</span><span class="ptag">Metallic Ink / Hot Stamp</span><span class="ptag">Rose Cotton Rope Handle</span></div></div></div>
+
+    <div class="pkg-item"><div class="pkg-icon-box">&#9749;</div><div class="pkg-body"><div class="pkg-sub">Beverages</div><div class="pkg-name">Cup Sleeve + Lid Label</div><div class="pkg-desc">300gsm cup sleeve in Petal Blush with a Signature Rose strip at top and bottom. "Chocolat Royal" in Playfair Display, with the logo centred. A 40mm round sticker on the lid identifies the drink type. Both elements act as brand touchpoints during carry.</div><div class="pkg-tags"><span class="ptag">300gsm Coated Board</span><span class="ptag">2-Colour Flexo Print</span><span class="ptag">Lid Sticker: 40mm Round</span></div></div></div>
+
+    <div class="pkg-item"><div class="pkg-icon-box">&#127872;</div><div class="pkg-body"><div class="pkg-sub">Finishing &amp; Sealing</div><div class="pkg-name">Brand Seal Sticker + Ribbon</div><div class="pkg-desc">A 55mm circular wax-style seal sticker in Champagne Gold, embossed with the CR monogram. Applied to takeaway bags and boxes as a premium closure. Alternatively, a 10mm wide Signature Rose satin ribbon with the brand name woven in - used on gift-grade orders.</div><div class="pkg-tags"><span class="ptag">Champagne Foil Sticker</span><span class="ptag">Embossed CR Monogram</span><span class="ptag">Rose Satin Ribbon Option</span></div></div></div>
+
+    <div class="pkg-item"><div class="pkg-icon-box">&#128371;</div><div class="pkg-body"><div class="pkg-sub">Loyalty Programme</div><div class="pkg-name">Royal Member Card</div><div class="pkg-desc">Credit-card-format loyalty card in matte laminated 600gsm board. Front: logo on rose-stripe background, member name in champagne gold foil. Back: stamp grid (10 visits = 1 complimentary item), social handles, and a QR code linking to the loyalty portal.</div><div class="pkg-tags"><span class="ptag">600gsm Board</span><span class="ptag">Matte Lam</span><span class="ptag">Spot UV + Gold Foil</span><span class="ptag">85.6 x 53.98mm</span></div></div></div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PANEL 5 — BI-FOLD STRUCTURE
+═══════════════════════════════════════════════════════════ -->
+<div id="bifold" class="panel">
+  <div class="bifold-wrap">
+    <div style="text-align:center;margin-bottom:44px;">
+      <div class="gold-rule"><span>Bi-Fold Structure</span></div>
+      <p style="font-family:var(--ff-accent); font-style:italic; font-size:clamp(14px, 1.5vw, 16px); color:var(--text-soft);">Size: A3 Flat (420x297mm) | Folded: A4 (210x297mm)</p>
+    </div>
+
+    <div class="bifold-grid">
+      <!-- FRONT COVER -->
+      <div class="panel-spec">
+        <span class="panel-num">Panel 1</span>
+        <h3 class="panel-title">Front Cover</h3>
+        <ul class="spec-list">
+          <li><strong>Minimal Layout:</strong> Centered logo, large script brand name, spaced-out tagline.</li>
+          <li><strong>Elements:</strong> "Dinner Menu", Small crest &#9820;.</li>
+          <li><strong>Design Rule:</strong> 60% empty space. No prices. No clutter.</li>
+        </ul>
+      </div>
+
+      <!-- INSIDE LEFT -->
+      <div class="panel-spec">
+        <span class="panel-num">Panel 2</span>
+        <h3 class="panel-title">Inside Left</h3>
+        <ul class="spec-list">
+          <li><strong>Sections:</strong> Salads, Starters.</li>
+          <li><strong>Layout:</strong> Two stacked sections on soft pink background panels.</li>
+          <li><strong>Detail:</strong> Thin gold divider between sections.</li>
+        </ul>
+      </div>
+
+      <!-- INSIDE RIGHT -->
+      <div class="panel-spec">
+        <span class="panel-num">Panel 3</span>
+        <h3 class="panel-title">Inside Right</h3>
+        <ul class="spec-list">
+          <li><strong>Sections:</strong> Main Courses, Sides, Desserts.</li>
+          <li><strong>Hierarchy:</strong> Mains are dominant; Sides in compact list; Desserts with elegant spacing.</li>
+          <li><strong>Spacing:</strong> Heaviest panel, precise spacing is critical.</li>
+        </ul>
+      </div>
+
+      <!-- BACK PANEL -->
+      <div class="panel-spec">
+        <span class="panel-num">Panel 4</span>
+        <h3 class="panel-title">Back Panel</h3>
+        <ul class="spec-list">
+          <li><strong>Intentional Content:</strong> Refined brand statement, contact info, socials.</li>
+          <li><strong>Tone:</strong> "A refined dining experience where indulgence meets elegance."</li>
+          <li><strong>Optional:</strong> QR code for menu/reservations.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="design-rules-box">
+      <span class="dr-title">Print Specs &amp; Design System</span>
+      <div class="dr-grid">
+        <div class="dr-item">
+          <span class="dr-label">Print Specs</span>
+          Bleed: 3mm | Safe margin: 10-12mm<br>
+          Paper: 300-350gsm textured matte<br>
+          Finish: Matte lam + Gold foil logo
+        </div>
+        <div class="dr-item">
+          <span class="dr-label">Typography Formula</span>
+          Headings: Playfair Display (Spaced)<br>
+          Descriptions: Cormorant Garamond Italic<br>
+          Brand: Great Vibes
+        </div>
+        <div class="dr-item">
+          <span class="dr-label">Spacing Formula</span>
+          Section gap: 40-60px<br>
+          Item gap: 10-14px<br>
+          Section padding: 25-35px
+        </div>
+        <div class="dr-item">
+          <span class="dr-label">Color Discipline</span>
+          Background: #fce8ef (Blush)<br>
+          Panels: #f7d8e2 (Muted Pink)<br>
+          Text: #2c1008 (Cocoa)
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DOWNLOAD BAR
+═══════════════════════════════════════════════════════════ -->
+<div class="dl-bar">
+  <button class="btn btn-gold" onclick="window.print()">&#11042; Print / Save as PDF</button>
+  <button class="btn btn-outline" onclick="dlBrief()">&darr; Download Brand Brief</button>
+</div>
+
+
+<script>
+// Panel switching with mobile menu close
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Close mobile menu if open
+  var tabs = document.getElementById('navTabs');
+  var toggle = document.getElementById('navToggle');
+  if (tabs.classList.contains('open')) {
+    tabs.classList.remove('open');
+    toggle.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+}
+
+// Mobile menu toggle
+(function() {
+  var toggle = document.getElementById('navToggle');
+  var tabs = document.getElementById('navTabs');
+  toggle.addEventListener('click', function() {
+    var isOpen = tabs.classList.toggle('open');
+    toggle.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+})();
+
+// Download brand brief
+function dlBrief() {
+  var t = `CHOCOLAT ROYAL - BRAND BRIEF
+Pink-Forward Premium Edition
+French Confectionery & Continental Dining - Lagos, Nigeria
+==========================================================
+
+COLOUR PALETTE
+--------------
+Signature Rose   #c96882   PMS 7523 C   Hero pink - stripes, accents
+Dusty Rose       #e8a0b4   PMS 9180 C   Secondary pink
+Petal Blush      #fce8ef   PMS 9183 C   Main background
+Soft Blush       #f5cdd8   PMS 9181 C   Panel / card bg
+Champagne Gold   #c4a456   PMS 7755 C   Premium accent
+Deep Chocolate   #2c1008   PMS 477 C    Dark anchor
+Warm Chocolate   #5c2a18   PMS 478 C    Secondary dark
+Deep Berry       #7a2e42   PMS 7421 C   Depth accent
+
+TYPOGRAPHY
+----------
+Script:   Great Vibes (Regular)          - brand name, covers
+Display:  Playfair Display (400/500/700) - section titles, signage
+Accent:   Cormorant Garamond Italic      - descriptions, French subtitles
+Body/UI:  Montserrat (200/300/400/600)   - notices, labels, UI
+
+LOGO RULE
+---------
+The logo is NEVER modified, recoloured, filtered, or altered.
+The surrounding environment shifts to signal each experience - the logo itself is the constant.
+
+PRINT STANDARDS
+---------------
+Colour mode:  CMYK throughout
+Resolution:   300 DPI at final size
+Bleed:        3mm all sides
+Safe zone:    3mm inside trim
+Format:       PDF/X-1a or PDF/X-4
+File naming:  CR_[Asset]_v[N]_[Status].pdf
+
+BRAND VOICE
+-----------
+Warm. Precise. French-inflected. Understated.
+French names first, English translation follows.
+No exclamation marks in menus.
+
+SOCIAL
+------
+Instagram & Facebook: @chocolatroyal`;
+
+  var blob = new Blob([t], { type: 'text/plain' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'CR_BrandBrief_v4.txt';
+  a.click();
+}
+</script>
+</body>
+</html>
